@@ -44,6 +44,10 @@ export class PostsService {
             }
           }
           return postsArray;
+        }),
+        catchError(errorRes => {
+          // Send to analytics server
+          return throwError(errorRes);
         })
       );
   }

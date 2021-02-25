@@ -11,13 +11,12 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  onCreatePost(postData: { title: string; content: string }) {
-    // Send Http request
+  onCreatePost(postData: { title: string; content: string }): void {
     this.http
       .post(
-        'https://ng-complete-guide-c56d3.firebaseio.com/posts.json',
+        'https://ng-vovanium-default-rtdb.firebaseio.com/posts.json',
         postData
       )
       .subscribe(responseData => {
@@ -25,11 +24,11 @@ export class AppComponent implements OnInit {
       });
   }
 
-  onFetchPosts() {
+  onFetchPosts(): void {
     // Send Http request
   }
 
-  onClearPosts() {
+  onClearPosts(): void {
     // Send Http request
   }
 }

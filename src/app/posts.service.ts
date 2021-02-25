@@ -37,6 +37,7 @@ export class PostsService {
       .get<{ [key: string]: Post }>('https://ng-vovanium-default-rtdb.firebaseio.com/posts.json',
         {
           headers: new HttpHeaders({'Custom-Header': 'Hello'}),
+          params: new HttpParams().set('print', 'pretty')
         })
       .pipe(
         map(responseData => {

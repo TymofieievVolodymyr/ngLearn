@@ -6,7 +6,7 @@ import {
   HttpEventType
 } from '@angular/common/http';
 import {map, catchError, tap} from 'rxjs/operators';
-import {Subject, throwError} from 'rxjs';
+import {Observable, Subject, throwError} from 'rxjs';
 
 import {Post} from './post.model';
 
@@ -29,8 +29,8 @@ export class PostsService {
         console.log(responseData);
       });
   }
-    fetchPosts(): void {
-      this.http
+    fetchPosts(): Observable<any> {
+      return this.http
         .get<{ [key: string]: Post }>('https://ng-vovanium-default-rtdb.firebaseio.com/posts.json')
         .pipe(
           map(responseData => {
@@ -42,9 +42,7 @@ export class PostsService {
             }
             return postsArray;
           })
-        )
-        .subscribe(posts => {
-        });
+        );
     }
 }
 

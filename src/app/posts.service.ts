@@ -27,6 +27,8 @@ export class PostsService {
       )
       .subscribe(responseData => {
         console.log(responseData);
+      }, error => {
+        this.error.next(error.message);
       });
   }
 
@@ -52,17 +54,17 @@ export class PostsService {
         observe: 'events',
         responseType: 'text'
       });
-      // .pipe(
-      //   tap(event => {
-      //     console.log(event);
-      //     if (event.type === HttpEventType.Sent) {
-      //       // ...
-      //     }
-      //     if (event.type === HttpEventType.Response) {
-      //       console.log(event.body);
-      //     }
-      //   })
-      // );
+    // .pipe(
+    //   tap(event => {
+    //     console.log(event);
+    //     if (event.type === HttpEventType.Sent) {
+    //       // ...
+    //     }
+    //     if (event.type === HttpEventType.Response) {
+    //       console.log(event.body);
+    //     }
+    //   })
+    // );
   }
 }
 

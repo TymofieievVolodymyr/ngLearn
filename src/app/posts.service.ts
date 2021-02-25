@@ -23,7 +23,10 @@ export class PostsService {
     this.http
       .post<{ name: string }>(
         'https://ng-vovanium-default-rtdb.firebaseio.com/posts.json',
-        postData
+        postData,
+        {
+          observe: 'events'
+        }
       )
       .subscribe(responseData => {
         console.log(responseData);
@@ -37,7 +40,7 @@ export class PostsService {
       .get<{ [key: string]: Post }>('https://ng-vovanium-default-rtdb.firebaseio.com/posts.json',
         {
           headers: new HttpHeaders({'Custom-Header': 'Hello'}),
-          params: new HttpParams().set('print', 'pretty')
+          // params: new HttpParams().set('print', 'pretty')
         })
       .pipe(
         map(responseData => {
@@ -61,18 +64,18 @@ export class PostsService {
       .delete('https://ng-vovanium-default-rtdb.firebaseio.com/posts.json', {
         observe: 'events',
         responseType: 'text'
-      });
-    // .pipe(
-    //   tap(event => {
-    //     console.log(event);
-    //     if (event.type === HttpEventType.Sent) {
-    //       // ...
-    //     }
-    //     if (event.type === HttpEventType.Response) {
-    //       console.log(event.body);
-    //     }
-    //   })
-    // );
+      })
+    .pipe(
+      tap(event => {
+        console.log(event);
+        if (event.type === HttpEventType.Sent) {
+          // ...
+        }
+        if (event.type === HttpEventType.Response) {
+          console.log(event.body);
+        }
+      })
+    );
   }
 }
 

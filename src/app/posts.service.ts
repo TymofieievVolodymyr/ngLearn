@@ -34,7 +34,10 @@ export class PostsService {
 
   fetchPosts(): Observable<any> {
     return this.http
-      .get<{ [key: string]: Post }>('https://ng-vovanium-default-rtdb.firebaseio.com/posts.json')
+      .get<{ [key: string]: Post }>('https://ng-vovanium-default-rtdb.firebaseio.com/posts.json',
+        {
+          headers: new HttpHeaders({'Custom-Header': 'Hello'}),
+        })
       .pipe(
         map(responseData => {
           const postsArray: Post[] = [];

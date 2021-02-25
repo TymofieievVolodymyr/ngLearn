@@ -29,21 +29,41 @@ export class PostsService {
         console.log(responseData);
       });
   }
-    fetchPosts(): Observable<any> {
-      return this.http
-        .get<{ [key: string]: Post }>('https://ng-vovanium-default-rtdb.firebaseio.com/posts.json')
-        .pipe(
-          map(responseData => {
-            const postsArray: Post[] = [];
-            for (const key in responseData) {
-              if (responseData.hasOwnProperty(key)) {
-                postsArray.push({...responseData[key], id: key});
-              }
+
+  fetchPosts(): Observable<any> {
+    return this.http
+      .get<{ [key: string]: Post }>('https://ng-vovanium-default-rtdb.firebaseio.com/posts.json')
+      .pipe(
+        map(responseData => {
+          const postsArray: Post[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              postsArray.push({...responseData[key], id: key});
             }
-            return postsArray;
-          })
-        );
-    }
+          }
+          return postsArray;
+        })
+      );
+  }
+
+  deletePosts(): Observable<any> {
+    return this.http
+      .delete('https://ng-vovanium-default-rtdb.firebaseio.com/posts.json', {
+        observe: 'events',
+        responseType: 'text'
+      });
+      // .pipe(
+      //   tap(event => {
+      //     console.log(event);
+      //     if (event.type === HttpEventType.Sent) {
+      //       // ...
+      //     }
+      //     if (event.type === HttpEventType.Response) {
+      //       console.log(event.body);
+      //     }
+      //   })
+      // );
+  }
 }
 
 

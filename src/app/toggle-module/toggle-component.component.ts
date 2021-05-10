@@ -1,16 +1,15 @@
-import { Component, Input, Output, EventEmitter, ContentChild, AfterContentInit, OnChanges, SimpleChanges } from '@angular/core';
+import {Component, Output, EventEmitter, ContentChild, AfterContentInit} from '@angular/core';
 import {ToggleOnComponent} from './toggle-on-component.component';
 import {ToggleOffComponent} from './toggle-off-component.component';
 import {ToggleButtonComponent} from './toggle-button-component.component';
-
 
 
 @Component({
   selector: 'toggle',
   template: '<ng-content></ng-content>',
 })
-export class ToggleComponent implements AfterContentInit, OnChanges {
-  @Input() on: boolean;
+export class ToggleComponent implements AfterContentInit {
+  on: boolean;
   @Output() toggle: EventEmitter<boolean> = new EventEmitter();
 
   @ContentChild(ToggleOnComponent) toggleOn: ToggleOnComponent;
@@ -25,14 +24,7 @@ export class ToggleComponent implements AfterContentInit, OnChanges {
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(1);
-    console.log(changes);
-    const { on } = changes;
-    if (on) {
-      this.update();
-    }
-  }
+
 
   update(): void {
     this.toggleOn.on = this.on;

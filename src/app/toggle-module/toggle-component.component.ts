@@ -26,6 +26,8 @@ export class ToggleComponent implements AfterContentInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(1);
+    console.log(changes);
     const { on } = changes;
     if (on) {
       this.update();

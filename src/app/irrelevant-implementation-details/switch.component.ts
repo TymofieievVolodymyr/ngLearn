@@ -9,6 +9,6 @@ export class SwitchComponent implements OnInit {
   @Input() className: string;
 
   ngOnInit(): void {
-    console.log(this.className);
+    console.log(this.on);
   }
 }

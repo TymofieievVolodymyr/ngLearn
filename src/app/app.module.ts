@@ -6,11 +6,11 @@ import { AppComponent } from './app.component';
 import { MyToggleComponent } from './my-toggle.component';
 import { SwitchComponent } from './irrelevant-implementation-details/switch.component';
 import { ToggleModule } from './toggle/toggle.module';
-import {LabelledStateComponent} from './labelled-state.component';
+
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule, ToggleModule ],
-  declarations: [ AppComponent, MyToggleComponent, SwitchComponent, LabelledStateComponent ],
+  declarations: [ AppComponent, MyToggleComponent, SwitchComponent],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

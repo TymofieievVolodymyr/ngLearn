@@ -1,8 +1,8 @@
 <toggle>
   <ng-template #templateVariable let-on="on" let-toggle="toggle">
     {{ on
-        ? 'The button is on'
-        : 'The button is off'}}
+    ? 'The button is on'
+    : 'The button is off'}}
     <!-- The red squiggles on toggle() can be ignored, but are annoying. -->
     <switch [on]="on" (click)="toggle()"></switch>
     <hr />
@@ -16,8 +16,8 @@
 <toggle>
   <ng-template let-on="on" let-fns="fns" #templateVariable>
     {{ on
-        ? 'The button is on'
-        : 'The button is off'}}
+    ? 'The button is on'
+    : 'The button is off'}}
     <switch [on]="on" (click)="fns.toggle()"></switch>
     <hr />
     <my-toggle [on]="on" (toggle)="fns.toggle()"></my-toggle>

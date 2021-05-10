@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ToggleComponent } from './toggle.component';
+import { ToggleDirective } from './toggle.directive';
+import { ToggleProviderDirective } from './toggle.toggleProvider.directive';
 import { ToggleOnComponent } from './toggle.on.component';
 import { ToggleOffComponent } from './toggle.off.component';
 import { ToggleButtonComponent } from './toggle.button.component';
@@ -9,7 +10,8 @@ import { SwitchComponent } from '../irrelevant-implementation-details/switch.com
 
 @NgModule({
   declarations: [
-    ToggleComponent,
+    ToggleProviderDirective,
+    ToggleDirective,
     ToggleButtonComponent,
     ToggleOffComponent,
     ToggleOnComponent,
@@ -17,7 +19,8 @@ import { SwitchComponent } from '../irrelevant-implementation-details/switch.com
   ],
   imports: [ CommonModule ],
   exports: [
-    ToggleComponent,
+    ToggleProviderDirective,
+    ToggleDirective,
     ToggleButtonComponent,
     ToggleOffComponent,
     ToggleOnComponent,

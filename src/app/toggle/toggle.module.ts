@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
+import { ToggleComponent } from './toggle.component';
+import { ToggleOnComponent } from './toggle.on.component';
+import { ToggleOffComponent } from './toggle.off.component';
+import { ToggleButtonComponent } from './toggle.button.component';
 import { SwitchComponent } from '../irrelevant-implementation-details/switch.component';
-import {ToggleComponent} from './toggle-component.component';
-import {ToggleButtonComponent} from './toggle-button-component.component';
-import {ToggleOffComponent} from './toggle-off-component.component';
-import {ToggleOnComponent} from './toggle-on-component.component';
 
 @NgModule({
   declarations: [

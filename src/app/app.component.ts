@@ -5,6 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
 })
 export class AppComponent  {
+  public on = true;
+
   onToggle(message, on) {
     console.log(message, on);
   }

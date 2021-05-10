@@ -1,39 +1,25 @@
-<h2>Basic</h2>
-<div toggle #firstToggle="toggle" (toggle)="onToggle('first', $event)">
-	<p>
-    First:
-    <toggle-on>On</toggle-on>
-    <toggle-off>Off</toggle-off>
-    <toggle-button></toggle-button>
-  </p>
-	<toggle #secondToggle="toggle" (toggle)="onToggle('second', $event)">
-  	<p>
-      Second:
-      <toggle-on>On</toggle-on>
-      <toggle-off>Off</toggle-off>
-      <toggle-button></toggle-button>
-    </p>
-	</toggle>
-</div>
+<toggle>
+  <ng-template #templateVariable let-on="on" let-toggle="toggle">
+    {{ on
+        ? 'The button is on'
+        : 'The button is off'}}
+    <!-- The red squiggles on toggle() can be ignored, but are annoying. -->
+    <switch [on]="on" (click)="toggle()"></switch>
+    <hr />
+    <my-toggle [on]="on" (toggle)="toggle()"></my-toggle>
+  </ng-template>
+</toggle>
 
-<h2>Explicit References</h2>
-<p [toggleProvider]="firstToggle">
-  First:
-  <toggle-on>On</toggle-on>
-  <toggle-off>Off</toggle-off>
-  <toggle-button></toggle-button>
-</p>
-<p [toggleProvider]="secondToggle">
-  Second:
-  <toggle-on>On</toggle-on>
-  <toggle-off>Off</toggle-off>
-  <toggle-button></toggle-button>
-</p>
+<br><br><br>
 
-<!--<h2>Custom Components</h2>-->
-<!--<div [toggleProvider]="firstToggle">-->
-<!--  <labelled-state toggleName="First"></labelled-state>-->
-<!--  <labelled-button toggleName="First"></labelled-button>-->
-<!--</div>-->
-<!--<labelled-state toggleName="Second" [toggleProvider]="secondToggle"> </labelled-state>-->
-<!--<labelled-button toggleName="Second" [toggleProvider]="secondToggle"> </labelled-button>-->
+<h3>Workaround to avoid red squiggles</h3>
+<toggle>
+  <ng-template let-on="on" let-fns="fns" #templateVariable>
+    {{ on
+        ? 'The button is on'
+        : 'The button is off'}}
+    <switch [on]="on" (click)="fns.toggle()"></switch>
+    <hr />
+    <my-toggle [on]="on" (toggle)="fns.toggle()"></my-toggle>
+  </ng-template>
+</toggle>

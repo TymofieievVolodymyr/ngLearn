@@ -9,7 +9,7 @@ import { ToggleComponent } from './toggle.component';
 export class ToggleButtonComponent  {
   constructor(public toggle: ToggleComponent) {}
 
-  onClick() {
+  onClick(): void {
     this.toggle.setOnState(!this.toggle.on);
   }
 }

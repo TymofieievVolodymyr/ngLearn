@@ -8,7 +8,7 @@ export class ToggleComponent {
   @Input() on: boolean;
   @Output() toggle: EventEmitter<boolean> = new EventEmitter();
 
-  setOnState(on: boolean) {
+    setOnState(on: boolean): void {
     this.on = on;
     this.toggle.emit(this.on);
   }

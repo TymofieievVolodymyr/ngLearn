@@ -7,7 +7,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ToggleButtonComponent  {
   @Input() on: boolean;
   @Output() toggle: EventEmitter<boolean> = new EventEmitter();
-  onClick() {
+  onClick(): void {
     this.on = !this.on;
     this.toggle.emit(this.on);
   }
